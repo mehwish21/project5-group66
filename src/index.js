@@ -3,7 +3,6 @@ const route = require("./routes/route")
 const mongoose = require('mongoose')
 const multer = require('multer')
 const { AppConfig } = require('aws-sdk')
-//const bcrypt = require('brypt')
 
 const app = express()
 app.use(express.json())

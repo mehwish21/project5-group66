@@ -64,7 +64,7 @@ let createProduct = async function (req, res) {
 
         const sizeArr = availableSizes.toUpperCase().split(",").map((x) => x.trim());
         data.availableSizes = sizeArr;
-
+        // XL
         //--------------checking the array that given size is valid or invalid-------------------------------------
         if (Array.isArray(sizeArr)) {
             for (let i = 0; i < sizeArr.length; i++) {
@@ -277,13 +277,6 @@ const updateProduct = async function (req, res) {
         if (currencyId == "USD") {
             filter.currencyFormat = "$"
         }
-    }
-
-    if (data.hasOwnProperty("currencyFormat")) {
-        if (!validation.isValid(currencyFormat)) {
-            return res.status(400).send({ status: false, message: "please provide currencyFormat in proper format" })
-        }
-        filter.currencyFormat = currencyFormat
     }
 
     if (data.hasOwnProperty("isFreeShipping")) {

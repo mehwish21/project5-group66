@@ -78,10 +78,9 @@ const createUser = async function (req, res) {
 
 
         //===========================================ADDRESS==============================================
-            // address = JSON.parse(data.address)
        
         if (!address) return res.status(400).send({ status: false, msg: "address requried" })
-        // var address = JSON.parse(address)
+
         let Fulladdress;
 
         try {
@@ -91,8 +90,6 @@ const createUser = async function (req, res) {
                 return res.status(400).send({ status: false, message: "please enter the address in right format" })
             }
         }
-
-        // let { shipping, billing } = Fulladdress
 
 
         if (!validation.isValid(Fulladdress.shipping.street)) {
@@ -144,7 +141,7 @@ const createUser = async function (req, res) {
         //===========================================HASHING PASSWORD==============================================
         const salt = await bcrypt.genSalt(10)
         // return res.send(salt.toString())
-        const hashedPassword = await bcrypt.hash(data.password, salt)
+        const hashedPassword = await bcrypt.hash(password, salt)
         data.password = hashedPassword
 
 
@@ -342,7 +339,7 @@ const updateUser = async function (req, res) {
                 return res.status(400).send({ status: false, message: "please provide password in proper format" })
             }
             const salt = await bcrypt.genSalt(10)
-            const hashedPassword = await bcrypt.hash(data.password, salt)
+            const hashedPassword = await bcrypt.hash(password, salt)
             filter.password = hashedPassword
         }
 

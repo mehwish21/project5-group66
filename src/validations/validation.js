@@ -8,10 +8,6 @@ const isValidRequestBody = function (requestBody) {
     return Object.keys(requestBody).length > 0
 }
 
-const isValidObject = function (value) {
-    return (typeof value === 'object')
-}
-
 
 const isValid = function (value) {
     if (typeof value === "undefined" || value === null) return false
@@ -51,16 +47,6 @@ function isValidImage(icon) {
     return ext.some((el) => icon.endsWith(el))
 }
 
-const hashPassword = async (password) => {
-    const hash = await bcrypt.hash(password, 10)
-    return hash
-    // console.log(await bcrypt.compare(password, hash))
-}
-
-// const isSize = function (title) {
-//     return ["S", "XS", "M", "X", "L", "XXL", "XL"].includes(title.toUpperCase())
-// }
-
 const isValidPrice = function (value) {
     if (/^\d+(\.\d{1,2})?$/.test(value)) return true
     return false
@@ -89,10 +75,4 @@ const isValidSize=function(arrayOfSize){
  }
 
 
-const isValidStatus = function (status) {
-    let enumArr = ["pending", "completed", "cancelled"]
-    return enumArr.includes(status); // returns a boolean
-}
-
-
-module.exports = { isValidObjectId, isValidRequestBody, isValidObject, isValid, isValidName, isValidEmail, isValidPhone, isValidPassword, isValidPincode, isValidImage, hashPassword, isValidPrice, isValidNum, isValidBoolean, isValidSize, isValidStatus }
+module.exports = { isValidObjectId, isValidRequestBody, isValid, isValidName, isValidEmail, isValidPhone, isValidPassword, isValidPincode, isValidImage, isValidPrice, isValidNum, isValidBoolean, isValidSize }
